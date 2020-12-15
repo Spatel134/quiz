@@ -1,9 +1,8 @@
 // <- Timer, loop through questions ->
 
 var i = 0;
-var score = 0;
-var secondsLeft = 50;
-var timer = document.querySelector("#time");
+var timer = 70;
+var timerInterval;
 var messageDiv = document.querySelector("#message");
 var answerValidationDiv = document.querySelector("#answerValidation");
 var storedScores;
@@ -14,27 +13,25 @@ var answerThree = document.getElementById("answerThree");
 var answerFour = document.getElementById("answerFour");
 
 function setTime() {
-    var timerInterval = setInterval(function () {
-        secondsLeft--;
-        timer.textContent = "Timer " + secondsLeft;
+    document.querySelector("#time").textContent = "Time: " + timer + "s";
+     timerInterval = setInterval(function () {
+        timer--;
+        document.querySelector("#time").textContent = "Time: " + timer + "s";
 
-        if (secondsLeft === 0) {
+        if (timer <= 0) {
             clearInterval(timerInterval);
             alert("Out of Time");
             endOfQuiz();
-        } else if (i === questions.length) {
-            clearInterval(timerInterval);
         }
     }, 1000);
-    return score;
+    return timer;
 }
 
 function endOfQuiz() {
+    document.getElementById("time").style.display ="none";
     var scoreTag = document.createElement("h1");
     var inputTag = document.createElement("input");
     var submitButton = document.createElement("button");
-    score += secondsLeft * 0.1;
-    score = score.toFixed(2) + "%";
     document.getElementById("question").textContent = "All Done!";
     answerOne.remove();
     answerTwo.remove();
@@ -42,7 +39,7 @@ function endOfQuiz() {
     answerFour.remove();
     document.body.children[1].appendChild(scoreTag);
     document.getElementsByTagName("h1")[0].setAttribute("id", "score");
-    document.getElementById("score").textContent = "Your Score: " + score;
+    document.getElementById("score").textContent = "Your final score is: " + timer;
     document.body.children[1].appendChild(inputTag);
     document.getElementsByTagName("input")[0].setAttribute("id", "input-field");
     submitButton.textContent = "Submit";
@@ -51,7 +48,7 @@ function endOfQuiz() {
         event.preventDefault();
         var highScoreText = new Object();
         highScoreText.name = inputTag.value.trim();
-        highScoreText.newScore = score;
+        highScoreText.newScore = timer;
         storeScores(highScoreText);
         window.location.href = "./highScore.html";
     });
@@ -66,6 +63,7 @@ function setQuestions() {
     document.getElementById("startButton").hidden = true;
 
     if (i === questions.length) {
+        clearInterval(timerInterval);
         endOfQuiz();
     } else {
         document.getElementById("question").textContent = questions[i]["title"];
@@ -110,10 +108,9 @@ document.getElementById("answerOne").addEventListener("click", function () {
     }, 2500);
     if (questions[i]["choices"][0] === questions[i]["answer"]) {
         answerValidationDiv.textContent = "Correct!";
-        score++;
     } else {
         answerValidationDiv.textContent = "Wrong!";
-        secondsLeft -= 10;
+        timer -= 10;
     }
     i++;
     setQuestions();
@@ -126,10 +123,9 @@ document.getElementById("answerTwo").addEventListener("click", function () {
     }, 2500);
     if (questions[i]["choices"][1] === questions[i]["answer"]) {
         answerValidationDiv.textContent = "Correct!";
-        score++;
     } else {
         answerValidationDiv.textContent = "Wrong!";
-        secondsLeft -= 10;
+        timer -= 10;
     }
     i++;
     setQuestions();
@@ -142,10 +138,9 @@ document.getElementById("answerThree").addEventListener("click", function () {
     }, 2500);
     if (questions[i]["choices"][2] === questions[i]["answer"]) {
         answerValidationDiv.textContent = "Correct!";
-        score++;
     } else {
         answerValidationDiv.textContent = "Wrong!";
-        secondsLeft -= 10;
+        timer -= 10;
     }
     i++;
     setQuestions();
@@ -158,10 +153,9 @@ document.getElementById("answerFour").addEventListener("click", function () {
     }, 2500);
     if (questions[i]["choices"][3] === questions[i]["answer"]) {
         answerValidationDiv.textContent = "Correct!";
-        score++;
     } else {
         answerValidationDiv.textContent = "Wrong!";
-        secondsLeft -= 10;
+        timer -= 10;
     }
     i++;
     setQuestions();
