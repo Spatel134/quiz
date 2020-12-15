@@ -5,6 +5,7 @@ var score = 0;
 var secondsLeft = 50;
 var timer = document.querySelector("#time");
 var messageDiv = document.querySelector("#message");
+var answerValidationDiv = document.querySelector("#answerValidation");
 var storedScores;
 var scoreList = [];
 var answerOne = document.getElementById("answerOne");
@@ -94,6 +95,7 @@ document.getElementById("startButton").addEventListener("click", setQuestions);
 document.getElementById("startButton").addEventListener("click", setTime);
 document.getElementById("startButton").addEventListener("click", function () {
     messageDiv.textContent = "";
+    answerValidationDiv.style.display = "none";
 });
 
 answerOne.hidden = true;
@@ -102,11 +104,15 @@ answerThree.hidden = true;
 answerFour.hidden = true;
 
 document.getElementById("answerOne").addEventListener("click", function () {
+    answerValidationDiv.style.display = "";
+    setTimeout(function () {
+        answerValidationDiv.style.display = "none";
+    }, 2500);
     if (questions[i]["choices"][0] === questions[i]["answer"]) {
-        messageDiv.textContent = "Correct!";
+        answerValidationDiv.textContent = "Correct!";
         score++;
     } else {
-        messageDiv.textContent = "Wrong!";
+        answerValidationDiv.textContent = "Wrong!";
         secondsLeft -= 10;
     }
     i++;
@@ -114,11 +120,15 @@ document.getElementById("answerOne").addEventListener("click", function () {
 });
 
 document.getElementById("answerTwo").addEventListener("click", function () {
+    answerValidationDiv.style.display = "";
+    setTimeout(function () {
+        answerValidationDiv.style.display = "none";
+    }, 2500);
     if (questions[i]["choices"][1] === questions[i]["answer"]) {
-        messageDiv.textContent = "Correct!";
+        answerValidationDiv.textContent = "Correct!";
         score++;
     } else {
-        messageDiv.textContent = "Wrong!";
+        answerValidationDiv.textContent = "Wrong!";
         secondsLeft -= 10;
     }
     i++;
@@ -126,11 +136,15 @@ document.getElementById("answerTwo").addEventListener("click", function () {
 });
 
 document.getElementById("answerThree").addEventListener("click", function () {
+    answerValidationDiv.style.display = "";
+    setTimeout(function () {
+        answerValidationDiv.style.display = "none";
+    }, 2500);
     if (questions[i]["choices"][2] === questions[i]["answer"]) {
-        messageDiv.textContent = "Correct!";
+        answerValidationDiv.textContent = "Correct!";
         score++;
     } else {
-        messageDiv.textContent = "Wrong!";
+        answerValidationDiv.textContent = "Wrong!";
         secondsLeft -= 10;
     }
     i++;
@@ -138,11 +152,15 @@ document.getElementById("answerThree").addEventListener("click", function () {
 });
 
 document.getElementById("answerFour").addEventListener("click", function () {
+    answerValidationDiv.style.display = "";
+    setTimeout(function () {
+        answerValidationDiv.style.display = "none";
+    }, 2500);
     if (questions[i]["choices"][3] === questions[i]["answer"]) {
-        messageDiv.textContent = "Correct!";
+        answerValidationDiv.textContent = "Correct!";
         score++;
     } else {
-        messageDiv.textContent = "Wrong!";
+        answerValidationDiv.textContent = "Wrong!";
         secondsLeft -= 10;
     }
     i++;
