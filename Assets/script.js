@@ -14,7 +14,7 @@ var answerFour = document.getElementById("answerFour");
 
 function setTime() {
     document.querySelector("#time").textContent = "Time: " + timer + "s";
-     timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         timer--;
         document.querySelector("#time").textContent = "Time: " + timer + "s";
 
@@ -28,22 +28,24 @@ function setTime() {
 }
 
 function endOfQuiz() {
-    document.getElementById("time").style.display ="none";
-    var scoreTag = document.createElement("h1");
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("time").style.display = "none";
+
+    var completeTag = document.createElement("h1");
+    completeTag.append(document.createTextNode("All Done!"));
+    completeTag.setAttribute("class", "col-11")
+
+    var scoreTag = document.createElement("h2");
+    scoreTag.setAttribute("class", "col-11")
+    scoreTag.append(document.createTextNode("Your final score is: " + timer));
+
     var inputTag = document.createElement("input");
+    inputTag.setAttribute("id", "input-field");
+    inputTag.setAttribute("class", "form-control d-inline w-50 my-2")
+
     var submitButton = document.createElement("button");
-    document.getElementById("question").textContent = "All Done!";
-    answerOne.remove();
-    answerTwo.remove();
-    answerThree.remove();
-    answerFour.remove();
-    document.body.children[1].appendChild(scoreTag);
-    document.getElementsByTagName("h1")[0].setAttribute("id", "score");
-    document.getElementById("score").textContent = "Your final score is: " + timer;
-    document.body.children[1].appendChild(inputTag);
-    document.getElementsByTagName("input")[0].setAttribute("id", "input-field");
+    submitButton.setAttribute("class", "btn btn-primary mx-2 my-2")
     submitButton.textContent = "Submit";
-    document.body.children[1].appendChild(submitButton);
     submitButton.addEventListener("click", function (event) {
         event.preventDefault();
         var highScoreText = new Object();
@@ -52,6 +54,12 @@ function endOfQuiz() {
         storeScores(highScoreText);
         window.location.href = "./highScore.html";
     });
+
+    var finalScoreDiv = document.getElementById("finalScore");
+    finalScoreDiv.appendChild(completeTag);
+    finalScoreDiv.appendChild(scoreTag);
+    finalScoreDiv.appendChild(inputTag);
+    finalScoreDiv.appendChild(submitButton);
 }
 
 function setQuestions() {
