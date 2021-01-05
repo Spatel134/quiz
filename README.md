@@ -1,35 +1,35 @@
 # Quiz
 
-**Coding Quiz** test your knowledge and see how well you know coding. 
+**Coding Quiz** test your knowledge and see how well you know coding.
 
-Take the quiz by clicking the start button. Remember, that is a timed quiz and every answer you get wrong, ten seconds are deducted from the time. Good Luck! 
+Take the quiz by clicking the start button. Remember, that is a timed quiz and every answer you get wrong, ten seconds are deducted from the time. Good Luck!
 
 ---
-## Preview:
-### Quiz
-![Code-Quiz](./assets/code-quiz.png)
 
+## Preview:
+
+### Quiz
+
+![Code-Quiz](./assets/code-quiz.png)
 
 ![Sample-Question](./assets/sample-question.png)
 
-
 ![End](./assets/end-quiz.png)
-
 
 ![Highscore-Page](./assets/highscore-page.png)
 
-
-
 ---
+
 ## Credits
-Special thanks to Georgia Tech Boot-camp staff for the positive feedback and support. 
-I would like to thank my classmates for assisting me whenever I reach out to them on slack. 
+
+Special thanks to Georgia Tech Boot-camp staff for the positive feedback and support.
+I would like to thank my classmates for assisting me whenever I reach out to them on slack.
 
 ## License
 
 MIT License
 
-Copyright (c) 2020  Sahil Patel
+Copyright (c) 2020 Sahil Patel
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -51,7 +51,6 @@ SOFTWARE.
 
 ---
 
+Test your knowledge: [Code-Quiz](https://spatel134.github.io/quiz/)!
 
-Test your knowledge: [Code-Quiz](https://spatel134.github.io/quiz/)! 
-
- *Please use Google Chrome browser*
+_Please use Google Chrome browser_
